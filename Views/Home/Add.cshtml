@@ -1,0 +1,38 @@
+﻿@model ToDoViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1 class="text-black-50">New Task</h1>
+
+<form asp-action="Add" method="post" class=" form-group w-50">
+    
+    <div>
+        <label asp-for="CurrentTask.Description">Description:</label>
+        <input type="text" asp-for="CurrentTask.Description" class="form-control" />
+        <span asp-validation-for="CurrentTask.Description" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CurrentTask.CategoryId">Category:</label>
+        <select class="form-control"  asp-items="@(new SelectList(Model.Categories,"CategoryId","Name"))" asp-for="CurrentTask.CategoryId">
+            <option class="list-group-item"></option>            
+        </select>
+        <span asp-validation-for="CurrentTask.CategoryId" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CurrentTask.DueDate">Due Date:</label>
+        <input type="datetime-local"  asp-for="CurrentTask.DueDate" class="form-control" />
+        <span asp-validation-for="CurrentTask.DueDate" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CurrentTask.StatusId">Status:</label>
+        <select class="form-control"  asp-items="@(new SelectList(Model.Statuses,"StatusId","Name"))" asp-for="CurrentTask.StatusId">
+            <option class="list-group-item"></option>            
+        </select>
+        <span asp-validation-for="CurrentTask.StatusId" class="text-danger"></span>
+    </div>
+       <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+    </div>
+</form>
