@@ -20,4 +20,4 @@ jobs:
           dotnet-version: 5.0.x
 
       - name: Run console message
-        run: dotnet --version
+        run: dotnet --version , docker --version
