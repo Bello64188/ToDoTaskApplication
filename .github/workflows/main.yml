@@ -19,7 +19,7 @@ jobs:
 
        # Run hello world
     - name: run console message
-      run: dotnet --version
+    - run: dotnet --version
       
     
      
