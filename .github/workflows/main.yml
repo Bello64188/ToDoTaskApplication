@@ -17,11 +17,5 @@ jobs:
       with:
        dotnet-version : 5.0.x
 
-       # Run hello world
-    - name: run console message
+       # Run hello world     
     - run: dotnet --version
-      
-    
-     
- 
- 
