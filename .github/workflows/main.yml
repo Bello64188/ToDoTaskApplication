@@ -20,5 +20,5 @@ jobs:
           dotnet-version: 5.0.x
 
       - name: Run console message
-        run: dotnet -v
+        run: dotnet --version
      
