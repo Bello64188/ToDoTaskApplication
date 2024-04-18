@@ -15,7 +15,5 @@ jobs:
     - name: Setup .NetCore SDK
       uses: action/setup-dotnet@v3.0.3
       with:
-       dotnet-version : 5.0.x
-
-       # Run hello world     
+       dotnet-version : 5.0.x   
     - run: dotnet --version
