@@ -9,11 +9,13 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: Get latest code
-      uses: action/checkout@v3
+      uses: actions/checkout@v3
     
     #Setup .NetCore SDk
     - name: Setup .NetCore SDK
-      uses: action/setup-dotnet@v3.0.3
+      uses: actions/setup-dotnet@v3.0.3
       with:
-       dotnet-version : 5.0.x   
-    - run: dotnet --version
+       dotnet-version : 5.0.x
+
+    - name: Run console go message   
+      run: dotnet --version
