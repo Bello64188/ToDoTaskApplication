@@ -1,21 +1,24 @@
 name: Simple Netcore Build
+
 on:
   push:
-     branches:
-          -master
-jobs:
-  build: 
-   name: Build
-   runs-on: ubuntu-latest
-   steps:
-    - name: Get latest code
-      uses: actions/checkout@v3
-    
-    #Setup .NetCore SDk
-    - name: Setup .NetCore SDK
-      uses: actions/setup-dotnet@v3.0.3
-      with:
-       dotnet-version : 5.0.x
+    branches:
+      - master
 
-    - name: Run console go message   
-      run: dotnet --version
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
+
+      - name: Setup .NetCore SDK
+        uses: actions/setup-dotnet@v3.0.3
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Run console message
+        run: dotnet --version
+
