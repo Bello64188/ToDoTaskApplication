@@ -1,0 +1,9 @@
+name: Verify file
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+name: ${{vars.}}
