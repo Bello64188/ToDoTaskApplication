@@ -16,16 +16,15 @@ jobs:
               with:
                 dotnet-version: 5.0.x
                
-                #  Build and Test using gradle
+            #  Restore, Build and Test
+            - name: Install dependencies
+              run : dotnet restore              
+                   
             - name: Build
-              uses: gradle/gradle-build-action@v2
-              with:
-                arguments: build
+              run: dotnet build              
 
             - name: Test
-              uses: gradle/gradle-build-action@v2
-              with: 
-                arguments: test
+              run: dotnet test              
 
             - name: Upload Artifact
               uses: actions/upload-artifact@v3
