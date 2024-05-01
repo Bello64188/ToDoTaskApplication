@@ -71,7 +71,7 @@ jobs:
            - name: Download candidate artifacts
              uses: actions/download-artifact@v3
              with:
-                name: archive.zip
+                name: public
            - name: GH Release
              uses: softprops/action-gh-release@v0.1.15
              with:
