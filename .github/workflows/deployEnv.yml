@@ -69,9 +69,10 @@ jobs:
         
         steps: 
            - name: Download candidate artifacts
-             uses: actions/download-artifact@v3
+             uses: actions/download-artifact@v2
              with:
                 name: public
+                path: Artifact
            - name: GH Release
              uses: softprops/action-gh-release@v0.1.15
              with:
