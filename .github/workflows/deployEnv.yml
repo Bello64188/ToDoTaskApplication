@@ -54,8 +54,9 @@ jobs:
                 prerelease: true
                 draft: true
                 name: dev
-                files:  greetings-deploy.jar
-
+                files: |
+                        Release.txt
+                        LICENSE
     deploy-pro:
         needs: [build-and-test]
         if: github.ref == 'refs/heads/master'
@@ -78,7 +79,9 @@ jobs:
                 token: ${{ vars.PROD_TOKEN }}
                 generate_release_notes: true
                 name: Production
-                files:  greetings-deploy.jar
+                files: |
+                        Release.txt
+                        LICENSE
 
 
 
