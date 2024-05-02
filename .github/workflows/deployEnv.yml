@@ -82,7 +82,7 @@ jobs:
                 token: ${{ secrets.PROD_TOKEN }}
                 generate_release_notes: true
                 name: Production
-                files: |
+                file: |
                         Release.txt
                         LICENSE
              env:
