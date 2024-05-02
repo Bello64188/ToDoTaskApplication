@@ -1,14 +1,11 @@
 name: Deployment example
 on: 
     push:
-        branches: ["master","dev"]
-           
-defaults:
-  run:
-   working-directory: ./ToDoTaskApplication
+        branches: ["master","dev"]           
+
 jobs:
     build-and-test:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest        
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
