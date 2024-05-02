@@ -1,12 +1,11 @@
 name: Deployment example
 on: 
     push:
-        branches: ["master","dev"]
-           
+        branches: ["master","dev"]           
 
 jobs:
     build-and-test:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest        
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
@@ -29,9 +28,8 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v3
               with: 
-                name: archive.zip
-                path: build/libs
-    
+                name: archive-zip
+                path: build/libs/archive.zip
     deploy-dev:
         
         needs: [build-and-test]
