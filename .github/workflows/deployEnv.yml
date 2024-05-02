@@ -30,8 +30,7 @@ jobs:
               uses: actions/upload-artifact@v3
               with: 
                 name: archive.zip
-               # path: build/libs
-    
+                path: build
     deploy-dev:
         
         needs: [build-and-test]
