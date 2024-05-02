@@ -29,7 +29,7 @@ jobs:
               uses: actions/upload-artifact@v3
               with: 
                 name: archive.zip
-                path: ./ToDoTaskApplication/build/libs
+                path: /home/runner/work/ToDoTaskApplication/ToDoTaskApplication/build/libs
     deploy-dev:
         
         needs: [build-and-test]
