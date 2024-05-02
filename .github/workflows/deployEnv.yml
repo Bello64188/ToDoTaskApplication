@@ -54,7 +54,7 @@ jobs:
                 prerelease: true
                 draft: true
                 name: dev
-                files:  greetings-deploy.txt
+                files:  v${{vars.DEV_VERSION}}.zip
 
     deploy-pro:
         needs: [build-and-test]
@@ -78,7 +78,7 @@ jobs:
                 token: ${{ vars.PROD_TOKEN }}
                 generate_release_notes: true
                 name: Production
-                files: greetings-deploy.txt
+                files: v${{ vars.PROD_VERSION }}.zip
 
 
 
