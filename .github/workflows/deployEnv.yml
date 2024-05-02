@@ -3,7 +3,9 @@ on:
     push:
         branches: ["master","dev"]
            
-
+defaults:
+  run:
+   working-directory: ./ToDoTaskApplication
 jobs:
     build-and-test:
         runs-on: ubuntu-latest
@@ -30,7 +32,7 @@ jobs:
               uses: actions/upload-artifact@v3
               with: 
                 name: archive.zip
-                path: '/ToDoTaskApplication/build/libs'
+                path: ./ToDoTaskApplication/build/libs
     deploy-dev:
         
         needs: [build-and-test]
