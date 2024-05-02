@@ -28,8 +28,8 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v3
               with: 
-                name: archive-zip
-                path: build/libs/archive.zip
+                name: archive.zip
+                path: /home/runner/work/ToDoTaskApplication/ToDoTaskApplication/bin/Debug/net5.0/
     deploy-dev:
         
         needs: [build-and-test]
