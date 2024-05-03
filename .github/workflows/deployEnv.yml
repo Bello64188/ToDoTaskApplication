@@ -57,9 +57,8 @@ jobs:
                 prerelease: true
                 draft: true
                 name: dev
-                files: |
-                        Release.txt
-                        LICENSE
+                files: Release.txt
+                
     deploy-pro:
         needs: [build-and-test]
         if: github.ref == 'refs/heads/master'
@@ -82,9 +81,7 @@ jobs:
                 token: ${{ secrets.PROD_TOKEN }}
                 generate_release_notes: true
                 name: Production
-                file: |
-                        Release.txt
-                        LICENSE
+                files: Release.txt
              env:
                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
