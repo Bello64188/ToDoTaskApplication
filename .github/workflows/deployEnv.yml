@@ -1,6 +1,7 @@
 name: Deployment example
 on: 
-    push:
+ pull_request:
+   # push:
         branches: ["master","dev"]           
 
 jobs:
