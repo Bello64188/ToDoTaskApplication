@@ -33,7 +33,7 @@ jobs:
           --header 'authorization: Bearer ${{secrets.GITHUB_TOKEN}}' \
           --header 'content-type: application/json' \
           --data '{
-            "title": "Failure : ${{inputs.title}}",
+            "title": "Dashboard : ${{inputs.title}}",
             "body": "Details : ${{inputs.body}}"
           }'
           echo ${{inputs.title}} created successfully.
