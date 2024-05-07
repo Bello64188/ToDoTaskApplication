@@ -34,6 +34,7 @@ jobs:
           --header 'content-type: application/json' \
           --data '{
             "title": "Dashboard : ${{inputs.title}}",
-            "body": "Details : ${{inputs.body}}"
+            "body": "Details : ${{inputs.body}}",
+            "assignee": "Bello Abdulazeez"
           }'
           echo ${{inputs.title}} created successfully.
