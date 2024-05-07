@@ -35,6 +35,6 @@ jobs:
           --data '{
             "title": "${{inputs.title}}",
             "body": "${{inputs.body}}",
-            "assignee": "Bello Abdulazeez"
+            "assignees": ["Bello64188"]
           }'
           echo ${{inputs.title}} created successfully.
