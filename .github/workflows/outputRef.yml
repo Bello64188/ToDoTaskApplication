@@ -2,14 +2,36 @@ name: Output From  Step
 
 on : 
     workflow_dispatch: 
+#Example one of output from step
 
+# jobs:
+#      setup:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Set debug
+#               id: set-debug-stage #id must be set
+#               run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
+
+#             - name: Get stage
+#               run: echo "The build stage is ${{steps.set-debug-stage.outputs.BUILD_STAGE}}"
+
+#Example two of output from step
 jobs:
-     setup:
+    setup:
         runs-on: ubuntu-latest
+
+        outputs:
+            build-stage: ${{steps.set-debug-stage.outputs.BUILD_STAGE}}
+        
         steps:
             - name: Set debug
-              id: set-debug-stage #id must be set
+              id: set-debug-stage
               run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
-
-            - name: Get stage
-              run: echo "The build stage is ${{steps.set-debug-stage.outputs.BUILD_STAGE}}"
+    report:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Get Stage
+              env:
+                  BUILD_STAGE: ${{needs.setup.outputs.build-stage}}
+              run: echo "The build stage is $BUILD_STAGE"
