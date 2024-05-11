@@ -7,7 +7,7 @@ on:
 
 env:
     REGISTRY: ghcr.io   
-    IMAGE_NAME: belloabdulazeez/todotaskapplication:latest
+    IMAGE_NAME: ${{github.repository}}
     BRANCH: master
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
               uses: docker/build-push-action@v4
               with: 
                # context: "{{defaultContext}}:/home/runner/work/ToDoTaskApplication/ToDoTaskApplication/Dockerfile"
-                tags: ${{ secrets.DOCKERHUB_USERNAME}}:${{env.BRANCH}}
+                tags: belloabdulazeez/todotaskapplication:latest
                 push: true
                 labels: ${{steps.meta.outputs.labels}}                
                 cache-from: type=gha                
