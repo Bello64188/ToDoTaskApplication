@@ -41,7 +41,7 @@ jobs:
               id: build-and-push
               uses: docker/build-push-action@v4
               with: 
-                context: "{{defaultContext}}:src"
+                context: "{{defaultContext}}:/home/runner/work/ToDoTaskApplication/ToDoTaskApplication"
                 tags: ${{steps.meta.outputs.tags}}
                 labels: ${{steps.meta.outputs.labels}}
                 cache-from: type=gha
