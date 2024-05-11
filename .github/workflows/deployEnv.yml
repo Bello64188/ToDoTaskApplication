@@ -1,11 +1,15 @@
 name: Deployment example
 on: 
-    push:
+ pull_request:
+   # push:
         branches: ["master","dev"]           
 
 jobs:
     build-and-test:
-        runs-on: ubuntu-latest        
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            issues: write
         steps:
             - name: checkout repository
               uses: actions/checkout@v3
@@ -28,8 +32,8 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v3
               with: 
-                name: archive-zip
-                path: build/libs/archive.zip
+                name: archive.zip
+                path: /home/runner/work/ToDoTaskApplication/ToDoTaskApplication/bin/Debug/net5.0/
     deploy-dev:
         
         needs: [build-and-test]
@@ -47,15 +51,15 @@ jobs:
                 name: archive.zip
             
           - name: release to dev
-            uses: softprops/action-gh-release@v0.1.15
+            uses: softprops/action-gh-release@v2
             with: 
                 tag_name: v${{vars.DEV_VERSION}}
                 token: ${{secrets.DEV_TOKEN}}
                 prerelease: true
                 draft: true
                 name: dev
-                files:  greetings-deploy.txt
-
+                files: Release.txt
+                
     deploy-pro:
         needs: [build-and-test]
         if: github.ref == 'refs/heads/master'
@@ -72,14 +76,15 @@ jobs:
                 name: archive.zip
 
            - name: GH Release
-             uses: softprops/action-gh-release@v0.1.15
+             uses: softprops/action-gh-release@v2
              with:
                 tag_name: v${{ vars.PROD_VERSION }}
-                token: ${{ vars.PROD_TOKEN }}
+                token: ${{ secrets.PROD_TOKEN }}
                 generate_release_notes: true
                 name: Production
-                files: greetings-deploy.txt
-
+                files: Release.txt
+             env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
                               
