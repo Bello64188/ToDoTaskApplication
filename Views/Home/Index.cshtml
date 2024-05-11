@@ -10,16 +10,16 @@
         <form asp-action="Filter" method="post">
             <div>
                 <label>Category:</label>
-                
-                <select name="filter" class="form-control"  asp-items="@(new SelectList(Model.Categories,"CategoryId","Name",Model.Filters.CategoryId))" >
-                    
+
+                <select name="filter" class="form-control" asp-items="@(new SelectList(Model.Categories,"CategoryId","Name",Model.Filters.CategoryId))">
+
                     <option value="all">All</option>
                 </select>
 
             </div>
             <div>
-                <label >Due:</label>
-                <select name="filter" class="form-control"  asp-items="@(new SelectList(Model.DueFilterValue,"Key","Value",Model.Filters.Due))">
+                <label>Due:</label>
+                <select name="filter" class="form-control" asp-items="@(new SelectList(Model.DueFilterValue,"Key","Value",Model.Filters.Due))">
 
                     <option value="all">All</option>
                 </select>
@@ -28,7 +28,7 @@
             </div>
             <div>
                 <p>Status:</p>
-                <select name="filter" class=" form-control"  asp-items="@(new SelectList(Model.Statuses,"StatusId","Name",Model.Filters.StatusId))">
+                <select name="filter" class=" form-control" asp-items="@(new SelectList(Model.Statuses,"StatusId","Name",Model.Filters.StatusId))">
 
                     <option value="all">All</option>
                 </select>
@@ -42,7 +42,7 @@
 
         </form>
     </div>
-    
+
     <div class="col-9 ">
         <a asp-action="Add"><h5>Add New Task</h5></a>
         <table class="table table-bordered table-striped">
@@ -60,24 +60,24 @@
                 @foreach (ToDo item in Model.Task)
                 {
                     string overdue = OverDue(item);
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Category.Name</td>
-                    <td class="@overdue">@($"{ item.DueDate:MM/dd/yyy}")</td>
-                    <td class="@overdue">@item.Status.Name</td>
-                    <td>
-                        <form asp-action="Edit" method="post" asp-route-id="@Model.Filters.FilterString">
-                            <input type="hidden" name="@nameof(ToDo.Id)" value="@item.Id" />
-                            <button type="submit" class=" btn btn-primary btn-sm" name="@(nameof(ToDo.StatusId))" value="closed">Completed</button>
-                            <button type="submit" class=" btn btn-primary btn-sm">Delete</button>
-                        </form>
-                       
-                    </td>
-                </tr>
-                        }
-                    
-                </tbody>
-           
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Category.Name</td>
+                        <td class="@overdue">@($"{ item.DueDate:MM/dd/yyy}")</td>
+                        <td class="@overdue">@item.Status.Name</td>
+                        <td>
+                            <form asp-action="Edit" method="post" asp-route-id="@Model.Filters.FilterString">
+                                <input type="hidden" name="@nameof(ToDo.Id)" value="@item.Id" />
+                                <button type="submit" class=" btn btn-primary btn-sm" name="@(nameof(ToDo.StatusId))" value="closed">Completed</button>
+                                <button type="submit" class=" btn btn-primary btn-sm">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
         </table>
     </div>
 </div>

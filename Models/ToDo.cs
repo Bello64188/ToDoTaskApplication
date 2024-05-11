@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ToDoTaskApplication.Models
 {
@@ -11,7 +8,7 @@ namespace ToDoTaskApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage ="* Please Enter Task Description")]
+        [Required(ErrorMessage = "* Please Enter Task Description")]
         public string Description { get; set; }
         [Required(ErrorMessage = "* Please Enter  Due Date")]
         public DateTime? DueDate { get; set; }
@@ -24,7 +21,7 @@ namespace ToDoTaskApplication.Models
         [Required(ErrorMessage = "* Please Select Status")]
         [ForeignKey("Status")]
         public string StatusId { get; set; }
-        public Status   Status  { get; set; }
+        public Status Status { get; set; }
         public bool OverDue =>
             StatusId?.ToLower() == "open" && DueDate < DateTime.Today;
 
