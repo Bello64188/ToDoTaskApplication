@@ -50,7 +50,7 @@ jobs:
               uses: docker/build-push-action@v4
               with: 
                # context: "{{defaultContext}}:/home/runner/work/ToDoTaskApplication/ToDoTaskApplication/Dockerfile"
-                tags: belloabdulazeez/todotaskapplication:latest
+                tags: belloabdulazeez/todotaskapplication:latest@v1.0.0
                 push: true
                 labels: ${{steps.meta.outputs.labels}}                
                 cache-from: type=gha                
