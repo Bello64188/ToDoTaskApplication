@@ -8,6 +8,7 @@ on:
 env:
     REGISTRY: ghcr.io   
     IMAGE_NAME: ${{github.repository}}
+    BRANCH: master
 
 jobs:
     build: 
@@ -49,7 +50,7 @@ jobs:
               uses: docker/build-push-action@v4
               with: 
                # context: "{{defaultContext}}:/home/runner/work/ToDoTaskApplication/ToDoTaskApplication/Dockerfile"
-                tags: ${{ secrets.DOCKERHUB_USERNAME}}:${GITHUB_REF##*/}
+                tags: ${{ secrets.DOCKERHUB_USERNAME}}:${{env.BRANCH}}
                 labels: ${{steps.meta.outputs.labels}}
                 push: true
                 cache-from: type=gha                
