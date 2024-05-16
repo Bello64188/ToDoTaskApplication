@@ -17,6 +17,13 @@ jobs:
             contents: read
             packages: write
             id-token: write
+        services:
+          sql.data:
+            image: mcr.microsoft.com/mssql/server:2019-latest
+            env:
+              ACCEPT_EULA: Y
+            ports:
+              - "1433:1433"   
         
         steps:
             - name: Checkout repository
