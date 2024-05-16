@@ -38,11 +38,11 @@ jobs:
             #     username: ${{github.actor}}
             #     password: ${{secrets.GITHUB_TOKEN}}
             
-            - name: Extract Docker metadata
-              id: meta
-              uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-              with:
-                images: ${${{env.IMAGE_NAME}}
+            # - name: Extract Docker metadata
+            #   id: meta
+            #   uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+            #   with:
+            #     images: ${${{env.IMAGE_NAME}}
 
 
             - name: Build and push Docker image
@@ -50,7 +50,7 @@ jobs:
               uses: docker/build-push-action@v4
               with: 
                # context: "{{defaultContext}}:/home/runner/work/ToDoTaskApplication/ToDoTaskApplication/Dockerfile"
-                tags: belloabdulazeez/todotaskapplication:latest
+                tags: belloabdulazeez/todotaskapplication:testv1.0
                 push: true
                 labels: ${{steps.meta.outputs.labels}}                
                 cache-from: type=gha                
