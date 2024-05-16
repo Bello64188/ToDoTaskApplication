@@ -9,19 +9,19 @@ namespace ToDoTaskApplication.Context
 {
     public class DbAppContext : DbContext
     {
-        public DbAppContext( DbContextOptions<DbAppContext> options) : base(options)
+        public DbAppContext(DbContextOptions<DbAppContext> options) : base(options)
         {
         }
 
-        public DbSet<Category>  Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<ToDo> ToDos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Category>().HasData(
-             
-            new Category {  CategoryId="work", Name="Work" },
+
+            new Category { CategoryId = "work", Name = "Work" },
             new Category { CategoryId = "home", Name = "Home" },
             new Category { CategoryId = "ex", Name = "Excercise" },
             new Category { CategoryId = "shop", Name = "Shopping" },
@@ -30,9 +30,9 @@ namespace ToDoTaskApplication.Context
             );
 
             builder.Entity<Status>().HasData(
-                
-                new Status {StatusId="open",Name="Open" },
-                new Status {StatusId="closed",Name="Completed" }
+
+                new Status { StatusId = "open", Name = "Open" },
+                new Status { StatusId = "closed", Name = "Completed" }
 
                 );
 
